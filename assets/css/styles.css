@@ -1,0 +1,60 @@
+/* MUBS Library Reservations — warm cream, ink, and orange */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Outfit, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #faf4eb;
+    color: #1c1917;
+}
+
+.font-serif {
+    font-family: Fraunces, Georgia, "Times New Roman", serif;
+}
+
+.bg-warm-mesh {
+    background-color: #1a1512;
+    background-image:
+        radial-gradient(at 12% 20%, rgba(234, 88, 12, 0.28) 0px, transparent 46%),
+        radial-gradient(at 88% 8%, rgba(234, 88, 12, 0.16) 0px, transparent 42%),
+        radial-gradient(at 70% 90%, rgba(234, 88, 12, 0.12) 0px, transparent 40%);
+}
+
+.glow-orange {
+    box-shadow: 0 10px 28px rgba(234, 88, 12, 0.32);
+}
+
+.input-field {
+    width: 100%;
+    border-radius: 0.85rem;
+    background: #fffdf9;
+    border: 1px solid #e7d8c9;
+    color: #1c1917;
+    padding: 0.8rem 1rem;
+    font-size: 0.875rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-field:focus {
+    outline: none;
+    border-color: #ea580c;
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.18);
+}
+.input-field::placeholder { color: #a8a29e; }
+
+select.input-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2378716c' viewBox='0 0 16 16'%3E%3Cpath d='M4.6 6.2L8 9.6l3.4-3.4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+}
+
+details.menu-dropdown > summary { list-style: none; }
+details.menu-dropdown > summary::-webkit-details-marker { display: none; }

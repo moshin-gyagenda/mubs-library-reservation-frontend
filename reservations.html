@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations — MUBS Library</title>
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { ink: '#1a1512', cream: '#faf4eb', orange: { DEFAULT: '#ea580c', dark: '#c2410c' } },
+                    fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'], serif: ['Fraunces', 'Georgia', 'serif'] }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Start: Header -->
+    <header class="fixed top-0 left-0 right-0 z-50">
+        <div class="bg-ink/95 backdrop-blur border-b border-white/10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-[4.5rem]">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/img/logo.png" alt="Makerere University Business School" class="h-12 w-12 object-contain">
+                        <div class="hidden sm:block">
+                            <p class="text-sm font-semibold text-white leading-tight">MUBS Library</p>
+                            <p class="text-[11px] text-orange-300">Nakawa Campus</p>
+                        </div>
+                    </a>
+                    <nav class="hidden md:flex items-center gap-7">
+                        <a href="index.html" class="text-sm text-stone-300 hover:text-white">Home</a>
+                        <a href="reservations.html" class="text-sm text-white font-medium">Reservations</a>
+                        <a href="create.html" class="px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-full text-sm font-semibold">Reserve a book</a>
+                    </nav>
+                    <label for="mobile-nav-toggle" class="md:hidden p-2 text-white cursor-pointer">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </label>
+                </div>
+                <input type="checkbox" id="mobile-nav-toggle" class="peer hidden">
+                <div class="hidden peer-checked:block md:!hidden pb-4">
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html" class="text-sm text-stone-300">Home</a>
+                        <a href="reservations.html" class="text-sm text-white font-medium">Reservations</a>
+                        <a href="create.html" class="px-5 py-2.5 bg-[#ea580c] text-white rounded-full text-sm font-semibold text-center">Reserve a book</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End: Header -->
+
+    <!-- Start: Main content -->
+    <main class="flex-1 pt-[4.75rem]">
+        <div class="bg-warm-mesh text-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-orange-300 mb-2">Library desk</p>
+                    <h1 class="font-serif text-3xl sm:text-4xl font-semibold">Reservations already made</h1>
+                    <p class="text-sm text-stone-300 mt-2 max-w-xl">Every submitted reservation should appear here after it is saved to the database.</p>
+                </div>
+                <a href="create.html" class="inline-flex items-center justify-center px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] rounded-full text-sm font-semibold text-white glow-orange shrink-0">
+                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                    Reserve a book
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-5 pb-16">
+
+            <!-- Start: Success flash (show after a successful POST in Laravel) -->
+            <div class="mb-5 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
+                Reservation saved. It now appears in the list below.
+            </div>
+            <!-- End: Success flash -->
+
+            <!-- Start: Reservations table -->
+            <!-- Laravel: wrap rows in @forelse ($reservations as $reservation) ... @empty ... @endforelse -->
+            <div class="bg-[#fffdf9] border border-orange-100 rounded-[1.5rem] overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[720px]">
+                        <thead>
+                            <tr class="bg-ink text-left">
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-orange-300">Student</th>
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-stone-400">Reg. number</th>
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-stone-400">Book</th>
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-stone-400">Pickup date</th>
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-stone-400">Programme</th>
+                                <th class="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-stone-400 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-orange-50 hover:bg-orange-50/70">
+                                <td class="py-3.5 px-4 text-sm font-medium">Aisha Namuli</td>
+                                <td class="py-3.5 px-4 text-sm text-stone-500">22/U/5432/PS</td>
+                                <td class="py-3.5 px-4 text-sm">Database System Concepts</td>
+                                <td class="py-3.5 px-4 text-sm text-[#ea580c] font-medium">15 Sep 2026</td>
+                                <td class="py-3.5 px-4 text-sm text-stone-500">BBC</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a href="create.html" class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-orange-50 text-[#ea580c] hover:bg-orange-100">
+                                            <i data-lucide="pencil" class="w-3.5 h-3.5 mr-1"></i>Edit
+                                        </a>
+                                        <form action="reservations.html" method="get">
+                                            <button type="submit" class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-stone-100 text-stone-600 hover:bg-red-50 hover:text-red-700">
+                                                <i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1"></i>Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-orange-50/70">
+                                <td class="py-3.5 px-4 text-sm font-medium">James Mwanga</td>
+                                <td class="py-3.5 px-4 text-sm text-stone-500">22/U/1180/PS</td>
+                                <td class="py-3.5 px-4 text-sm">Laravel: Up and Running</td>
+                                <td class="py-3.5 px-4 text-sm text-[#ea580c] font-medium">16 Sep 2026</td>
+                                <td class="py-3.5 px-4 text-sm text-stone-500">BBC</td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a href="create.html" class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-orange-50 text-[#ea580c] hover:bg-orange-100">
+                                            <i data-lucide="pencil" class="w-3.5 h-3.5 mr-1"></i>Edit
+                                        </a>
+                                        <form action="reservations.html" method="get">
+                                            <button type="submit" class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-stone-100 text-stone-600 hover:bg-red-50 hover:text-red-700">
+                                                <i data-lucide="trash-2" class="w-3.5 h-3.5 mr-1"></i>Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-4 border-t border-orange-100 text-sm text-stone-500">
+                    Showing 2 reservations. In Laravel these come from the <code class="text-stone-700">reservations</code> table.
+                </div>
+            </div>
+            <!-- End: Reservations table -->
+
+        </div>
+    </main>
+    <!-- End: Main content -->
+
+    <!-- Start: Footer -->
+    <footer class="bg-ink text-white mt-auto">
+        <div class="h-1.5 bg-[#ea580c]"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <p class="text-sm text-stone-400">© 2026 <span class="font-semibold text-white">MUBS Library</span>. All rights reserved.</p>
+                <p class="text-sm text-stone-500">Nakawa Campus · Mon–Fri, 8:00am – 8:00pm</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End: Footer -->
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
