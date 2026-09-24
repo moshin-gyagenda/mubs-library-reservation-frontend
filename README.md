@@ -31,8 +31,6 @@ The reservation form already uses these `name` attributes. Use the same names as
 | `student_name` | string |
 | `registration_number` | string |
 | `programme` | string |
-| `email` | string |
-| `phone` | string |
 | `book_title` | string |
 | `pickup_date` | date |
 
