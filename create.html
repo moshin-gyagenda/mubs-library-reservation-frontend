@@ -5,101 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserve a book — MUBS Library</title>
     <link rel="icon" type="image/png" href="assets/img/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { ink: '#1a1512', cream: '#faf4eb', orange: { DEFAULT: '#ea580c', dark: '#c2410c' } },
-                    fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'], serif: ['Fraunces', 'Georgia', 'serif'] }
-                }
-            }
-        };
-    </script>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col">
+<body class="page">
 
     <!-- Start: Header -->
-    <header class="fixed top-0 left-0 right-0 z-50">
-        <div class="bg-ink/95 backdrop-blur border-b border-white/10">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-[4.5rem]">
-                    <a href="index.html" class="flex items-center gap-3">
-                        <img src="assets/img/logo.png" alt="Makerere University Business School" class="h-12 w-12 object-contain">
-                        <div class="hidden sm:block">
-                            <p class="text-sm font-semibold text-white leading-tight">MUBS Library</p>
-                            <p class="text-[11px] text-orange-300">Nakawa Campus</p>
-                        </div>
+    <header class="site-header">
+        <div class="header-bar">
+            <div class="container">
+                <div class="header-row">
+                    <a href="index.html" class="brand">
+                        <img src="assets/img/logo.png" alt="Makerere University Business School" class="logo logo-sm">
+                        <span class="brand-text">
+                            <span class="brand-name">MUBS Library</span>
+                            <span class="brand-campus">Nakawa Campus</span>
+                        </span>
                     </a>
-                    <nav class="hidden md:flex items-center gap-7">
-                        <a href="index.html" class="text-sm text-stone-300 hover:text-white">Home</a>
-                        <a href="reservations.html" class="text-sm text-stone-300 hover:text-white">Reservations</a>
-                        <a href="create.html" class="px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-full text-sm font-semibold">Reserve a book</a>
+                    <nav class="desktop-nav">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="reservations.html" class="nav-link">Reservations</a>
+                        <a href="create.html" class="btn btn-primary btn-sm">Reserve a book</a>
                     </nav>
-                    <label for="mobile-nav-toggle" class="md:hidden p-2 text-white cursor-pointer">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    <label for="mobile-nav-toggle" class="menu-btn" aria-label="Open menu">
+                        <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                     </label>
                 </div>
-                <input type="checkbox" id="mobile-nav-toggle" class="peer hidden">
-                <div class="hidden peer-checked:block md:!hidden pb-4">
-                    <div class="flex flex-col gap-3">
-                        <a href="index.html" class="text-sm text-stone-300">Home</a>
-                        <a href="reservations.html" class="text-sm text-stone-300">Reservations</a>
-                        <a href="create.html" class="px-5 py-2.5 bg-[#ea580c] text-white rounded-full text-sm font-semibold text-center">Reserve a book</a>
+                <input type="checkbox" id="mobile-nav-toggle" class="nav-toggle">
+                <nav class="mobile-nav">
+                    <div class="mobile-nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="reservations.html" class="nav-link">Reservations</a>
+                        <a href="create.html" class="btn btn-primary btn-sm">Reserve a book</a>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
     </header>
     <!-- End: Header -->
 
     <!-- Start: Main content -->
-    <main class="flex-1 pt-[4.75rem]">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
-            <div class="grid lg:grid-cols-12 gap-8 items-start">
+    <main class="page-main">
+        <div class="container page-wrap">
+            <div class="reserve-layout">
 
                 <!-- Start: Side panel -->
-                <aside class="lg:col-span-4 bg-ink text-white rounded-[1.75rem] p-8 lg:sticky lg:top-28">
-                    <img src="assets/img/logo.png" alt="" class="h-16 w-16 object-contain mb-6">
-                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-orange-300">New reservation</p>
-                    <h1 class="font-serif text-3xl font-semibold mt-3 mb-4">Reserve a book</h1>
-                    <p class="text-sm text-stone-300 leading-relaxed mb-8">Tell us who you are and which title to hold. Library staff use this list at the Nakawa desk.</p>
-                    <ul class="space-y-3 text-sm text-stone-300">
-                        <li class="flex gap-2"><span class="text-[#ea580c] font-semibold">1.</span> Use your real registration number.</li>
-                        <li class="flex gap-2"><span class="text-[#ea580c] font-semibold">2.</span> Pick a weekday you can collect.</li>
-                        <li class="flex gap-2"><span class="text-[#ea580c] font-semibold">3.</span> Use the exact title as it appears on the spine.</li>
+                <aside class="side-panel">
+                    <img src="assets/img/logo.png" alt="" class="logo logo-lg">
+                    <p class="kicker">New reservation</p>
+                    <h1>Reserve a book</h1>
+                    <p class="intro">Tell us who you are and which title to hold. Library staff use this list at the Nakawa desk.</p>
+                    <ul class="tips">
+                        <li><span class="num">1.</span> Use your real registration number.</li>
+                        <li><span class="num">2.</span> Pick a weekday you can collect.</li>
+                        <li><span class="num">3.</span> Use the exact title as it appears on the spine.</li>
                     </ul>
-                    <a href="reservations.html" class="inline-flex items-center gap-2 mt-10 text-sm text-orange-300 hover:text-white">
+                    <a href="reservations.html" class="text-link">
                         See reservations already made
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </aside>
                 <!-- End: Side panel -->
 
                 <!-- Start: Reservation form -->
                 <!-- Laravel: change action to {{ route('reservations.store') }}, method="POST", and add @csrf -->
-                <form action="reservations.html" method="get" class="lg:col-span-8 bg-[#fffdf9] border border-orange-100 rounded-[1.75rem] overflow-hidden shadow-sm">
-                    <div class="p-6 sm:p-8 space-y-5">
+                <form action="reservations.html" method="get" class="form-card">
+                    <div class="form-body">
 
-                        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#ea580c]">Student details</p>
+                        <p class="section-label">Student details</p>
 
-                        <div>
-                            <label for="student_name" class="block text-sm font-medium text-stone-600 mb-2">Full name <span class="text-[#ea580c]">*</span></label>
+                        <div class="field">
+                            <label for="student_name">Full name <span class="req">*</span></label>
                             <input id="student_name" name="student_name" type="text" required class="input-field" placeholder="e.g. Aisha Namuli">
                         </div>
 
-                        <div class="grid sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="registration_number" class="block text-sm font-medium text-stone-600 mb-2">Registration number <span class="text-[#ea580c]">*</span></label>
+                        <div class="form-grid form-grid-2">
+                            <div class="field">
+                                <label for="registration_number">Registration number <span class="req">*</span></label>
                                 <input id="registration_number" name="registration_number" type="text" required class="input-field" placeholder="e.g. 22/U/5432/PS">
                             </div>
-                            <div>
-                                <label for="programme" class="block text-sm font-medium text-stone-600 mb-2">Programme <span class="text-[#ea580c]">*</span></label>
+                            <div class="field">
+                                <label for="programme">Programme <span class="req">*</span></label>
                                 <select id="programme" name="programme" required class="input-field">
                                     <option value="">Select a programme</option>
                                     <option value="Bachelor of Business Computing">Bachelor of Business Computing</option>
@@ -112,36 +97,36 @@
                             </div>
                         </div>
 
-                        <div class="grid sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-stone-600 mb-2">Email <span class="text-[#ea580c]">*</span></label>
+                        <div class="form-grid form-grid-2">
+                            <div class="field">
+                                <label for="email">Email <span class="req">*</span></label>
                                 <input id="email" name="email" type="email" required class="input-field" placeholder="e.g. aisha.namuli@mubs.ac.ug">
                             </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-stone-600 mb-2">Phone number <span class="text-[#ea580c]">*</span></label>
+                            <div class="field">
+                                <label for="phone">Phone number <span class="req">*</span></label>
                                 <input id="phone" name="phone" type="tel" required class="input-field" placeholder="e.g. 0772 123 456">
                             </div>
                         </div>
 
-                        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#ea580c] pt-3">Book details</p>
+                        <p class="section-label spaced">Book details</p>
 
-                        <div class="grid sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="book_title" class="block text-sm font-medium text-stone-600 mb-2">Book title <span class="text-[#ea580c]">*</span></label>
+                        <div class="form-grid form-grid-2">
+                            <div class="field">
+                                <label for="book_title">Book title <span class="req">*</span></label>
                                 <input id="book_title" name="book_title" type="text" required class="input-field" placeholder="e.g. Database System Concepts">
                             </div>
-                            <div>
-                                <label for="pickup_date" class="block text-sm font-medium text-stone-600 mb-2">Pickup date <span class="text-[#ea580c]">*</span></label>
+                            <div class="field">
+                                <label for="pickup_date">Pickup date <span class="req">*</span></label>
                                 <input id="pickup_date" name="pickup_date" type="date" required class="input-field">
                             </div>
                         </div>
                     </div>
 
-                    <div class="px-6 sm:px-8 py-5 bg-orange-50/80 border-t border-orange-100 flex justify-between">
-                        <a href="reservations.html" class="inline-flex items-center px-4 py-2.5 rounded-full border border-stone-200 bg-white text-sm font-medium text-stone-600 hover:bg-cream">Cancel</a>
-                        <button type="submit" class="inline-flex items-center px-5 py-2.5 bg-[#ea580c] hover:bg-[#c2410c] rounded-full text-sm font-semibold text-white glow-orange">
+                    <div class="form-actions">
+                        <a href="reservations.html" class="btn btn-outline btn-sm">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-sm glow-orange">
                             Submit reservation
-                            <i data-lucide="send" class="w-4 h-4 ml-2"></i>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
                         </button>
                     </div>
                 </form>
@@ -153,17 +138,16 @@
     <!-- End: Main content -->
 
     <!-- Start: Footer -->
-    <footer class="bg-ink text-white mt-auto">
-        <div class="h-1.5 bg-[#ea580c]"></div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
-                <p class="text-sm text-stone-400">© 2026 <span class="font-semibold text-white">MUBS Library</span>. All rights reserved.</p>
-                <p class="text-sm text-stone-500">Nakawa Campus · Mon–Fri, 8:00am – 8:00pm</p>
+    <footer class="site-footer footer-compact">
+        <div class="footer-accent"></div>
+        <div class="container footer-inner">
+            <div class="footer-row">
+                <p class="footer-muted">© 2026 <strong>MUBS Library</strong>. All rights reserved.</p>
+                <p class="footer-faint">Nakawa Campus · Mon–Fri, 8:00am – 8:00pm</p>
             </div>
         </div>
     </footer>
     <!-- End: Footer -->
 
-    <script>lucide.createIcons();</script>
 </body>
 </html>

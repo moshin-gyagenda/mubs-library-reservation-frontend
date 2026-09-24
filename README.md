@@ -1,6 +1,6 @@
 # MUBS Library Reservations — Frontend Template
 
-Static HTML + Tailwind CSS screens for the BUC3131 coursework (MUBS Library book reservations). No Laravel and no project JavaScript. Students copy these markup files into Blade views and wire them to routes, a controller, a model, and a migration.
+Static HTML + CSS screens for the BUC3131 coursework (MUBS Library book reservations). No Laravel, no Tailwind, and no CDN. Styles live in `assets/css/styles.css`, so the pages work with the internet off. Students copy these markup files into Blade views and wire them to routes, a controller, a model, and a migration.
 
 ## Design
 
@@ -8,7 +8,7 @@ A warm library look, distinct from the Campus Service Portal:
 
 - Cream page (`#faf4eb`), ink header/footer (`#1a1512`)
 - **Orange** (`#ea580c`) as the brand colour — buttons, accents, focus rings
-- Fraunces (headings) + Outfit (body)
+- Georgia (headings) + Segoe UI / system sans (body), so fonts load without the internet
 - Official MUBS crest: `assets/img/logo.png`
 - Key blocks are marked with `<!-- Start: … -->` / `<!-- End: … -->` comments
 
@@ -20,11 +20,7 @@ A warm library look, distinct from the Campus Service Portal:
 | `create.html` | Collect a reservation | `resources/views/reservations/create.blade.php` |
 | `reservations.html` | List reservations already made | `resources/views/reservations/index.blade.php` |
 
-Open `index.html` in a browser, or serve the folder:
-
-```bash
-npx --yes serve .
-```
+Open `index.html` in a browser. No install and no internet are required.
 
 ## Form fields → database columns
 
